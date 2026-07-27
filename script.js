@@ -12,9 +12,13 @@ const dots = Array.from(document.querySelectorAll('#pageDots .dot'));
 let swiper, currentIndex = 0;
 
 /* ============================================
-   1. Swiper
+   1. Swiper（带重试）
    ============================================ */
-function initSwiper() {
+function initSwiper(retry) {
+  if (typeof Swiper === 'undefined') {
+    if (retry < 5) setTimeout(() => initSwiper((retry||0)+1), 500);
+    return;
+  }
   swiper = new Swiper('.main-swiper', {
     direction: 'vertical',
     loop: false,
@@ -34,6 +38,7 @@ function initSwiper() {
       },
     },
   });
+  hideLoader();
 }
 
 /* ============================================
@@ -201,7 +206,18 @@ function initDraggableDecorations() {
 }
 
 /* ============================================
-   8. 初始化
+   8. 加载完成
+   ============================================ */
+function hideLoader() {
+  const loader = document.getElementById('pageLoader');
+  if (loader) {
+    loader.classList.add('hidden');
+    setTimeout(() => loader.remove(), 500);
+  }
+}
+
+/* ============================================
+   9. 初始化
    ============================================ */
 function init() {
   setViewportScale();
@@ -214,6 +230,8 @@ function init() {
   initNavItems();
   initDraggableDecorations();
   tryAutoPlay();
+  // 5秒后强制隐藏加载遮罩
+  setTimeout(hideLoader, 5000);
 }
 
 document.addEventListener('DOMContentLoaded', init);
