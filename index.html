@@ -2,57 +2,44 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=320,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" id="viewport">
   <title>青年发展中心实践部 · 纳新</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- ======== 背景图层系统 ======== -->
-  <!-- 第1层：底图 background.png -->
   <div class="bg-layer bg-base" aria-hidden="true"></div>
-
-  <!-- 第2层：大幅装饰图叠加 -->
   <div class="bg-layer bg-decor-1" aria-hidden="true"></div>
   <div class="bg-layer bg-decor-2" aria-hidden="true"></div>
   <div class="bg-layer bg-decor-3" aria-hidden="true"></div>
-
-  <!-- 第3层：GIF动态装饰 -->
   <img class="bg-sparkle sparkle-1" src="images/图片3.gif" alt="" aria-hidden="true">
   <img class="bg-sparkle sparkle-2" src="images/图片4.gif" alt="" aria-hidden="true">
   <img class="bg-sparkle sparkle-3" src="images/图片5.gif" alt="" aria-hidden="true">
-
-  <!-- 第4层：光效叠加 -->
   <div class="bg-layer bg-glow-1" aria-hidden="true"></div>
   <div class="bg-layer bg-glow-2" aria-hidden="true"></div>
 
-  <!-- ======== 应用外壳 ======== -->
-  <div class="app-shell">
+  <!-- ======== 音乐按钮 ======== -->
+  <button id="musicToggle" class="music-btn" aria-label="背景音乐">
+    <span class="music-icon">🔇</span>
+  </button>
 
-    <!-- 音频按钮 -->
-    <button id="musicToggle" class="music-btn" aria-label="背景音乐开关" title="背景音乐">
-      <span class="music-icon">🔇</span>
-    </button>
+  <!-- ======== 页码指示器 ======== -->
+  <nav class="page-dots" id="pageDots" aria-label="页面导航">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </nav>
 
-    <!-- 顶部导航 -->
-    <div class="topbar">
-      <div class="logo">✦ 实践部纳新</div>
-    </div>
-
-    <!-- 页码指示器 -->
-    <nav class="page-dots" aria-label="页面导航">
-      <span class="dot active" data-page="0"></span>
-      <span class="dot" data-page="1"></span>
-      <span class="dot" data-page="2"></span>
-      <span class="dot" data-page="3"></span>
-      <span class="dot" data-page="4"></span>
-    </nav>
-
-    <!-- ======== 主滚动容器 ======== -->
-    <main class="page-container" id="pageContainer">
+  <!-- ======== Swiper 容器 ======== -->
+  <div class="swiper main-swiper" id="mainSwiper">
+    <div class="swiper-wrapper">
 
       <!-- ====== 第1页：封面 ====== -->
-      <section class="page page-1" id="page1">
+      <section class="swiper-slide page page-1">
         <div class="page-inner">
           <div class="hero-badge anim-item">
             <span class="badge-dot"></span>青年发展中心
@@ -71,55 +58,47 @@
             <span>✨ 梦想启航</span>
           </div>
           <div class="scroll-hint anim-item">
-            <span class="hint-arrow"></span>向下滑动，开启我们的故事
+            <span class="hint-arrow"></span>向上滑动，开启故事
           </div>
         </div>
       </section>
 
-      <!-- ====== 第2页：关于我们 ====== -->
-      <section class="page page-2" id="page2">
+      <!-- ====== 第2页：关于我们（无图片） ====== -->
+      <section class="swiper-slide page page-2">
         <div class="page-inner">
           <div class="section-header anim-item">
             <span class="section-icon">💡</span>
             <h2 class="section-title">关于我们</h2>
             <p class="section-sub">一群有温度、有行动力的年轻人</p>
           </div>
-          <div class="about-grid">
-            <div class="about-text">
-              <div class="about-item anim-item">
-                <span class="about-emoji">🪟</span>
-                <div>
-                  <h3>充实校园生活的窗口</h3>
-                  <p>用丰富多彩的活动与学习体验，连接每一个热忱的你。</p>
-                </div>
-              </div>
-              <div class="about-item anim-item">
-                <span class="about-emoji">📖</span>
-                <div>
-                  <h3>学习成长进步的课堂</h3>
-                  <p>以严谨与温度并重，陪伴你一步步在思想上走向成熟。</p>
-                </div>
-              </div>
-              <div class="about-item anim-item">
-                <span class="about-emoji">🚀</span>
-                <div>
-                  <h3>实现自我突破的平台</h3>
-                  <p>让每一个想法都有机会变成行动，让梦想落地生根。</p>
-                </div>
+          <div class="about-list">
+            <div class="about-card anim-item">
+              <span class="about-emoji">🪟</span>
+              <div>
+                <h3>充实校园生活的窗口</h3>
+                <p>用丰富多彩的活动与学习体验，连接每一个热忱的你，让你的大学不止于课堂。</p>
               </div>
             </div>
-            <div class="about-image anim-item">
-              <div class="image-frame">
-                <img src="images/微信图片_20260723162342_33_99.jpg" alt="实践部团队风采" loading="lazy" />
+            <div class="about-card anim-item">
+              <span class="about-emoji">📖</span>
+              <div>
+                <h3>学习成长进步的课堂</h3>
+                <p>以严谨与温度并重的方式，陪伴你一步步了解党、靠近党，在思想上走向成熟。</p>
               </div>
-              <p class="image-caption">我们的故事，从这里开始 ✨</p>
+            </div>
+            <div class="about-card anim-item">
+              <span class="about-emoji">🚀</span>
+              <div>
+                <h3>实现自我突破的平台</h3>
+                <p>让每一个想法都有机会变成行动，让每一个梦想都有空间落地生根、开花结果。</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ====== 第3页：主要工作 ====== -->
-      <section class="page page-3" id="page3">
+      <!-- ====== 第3页：主要工作（参考设计重做） ====== -->
+      <section class="swiper-slide page page-3">
         <div class="page-inner">
           <div class="section-header anim-item">
             <span class="section-icon">🎯</span>
@@ -128,92 +107,95 @@
           </div>
           <div class="work-grid">
             <div class="work-card anim-item">
-              <div class="work-card-icon">🏫</div>
-              <h3>党校培训</h3>
-              <p>组织入党积极分子、发展对象、转正党员分批次培训，让理论与实践同频共振。</p>
-              <div class="work-card-glow"></div>
+              <div class="work-card-bg" style="background: linear-gradient(135deg, rgba(120,214,255,0.18), rgba(120,180,255,0.06))"></div>
+              <div class="work-card-icon-wrap">
+                <span class="work-icon">🏫</span>
+              </div>
+              <div class="work-card-body">
+                <h3>党校培训</h3>
+                <p>入党积极分子 · 发展对象 · 转正党员分批培训<br>理论与实践同频共振</p>
+              </div>
             </div>
             <div class="work-card anim-item">
-              <div class="work-card-icon">📚</div>
-              <h3>主题学习</h3>
-              <p>开展党史、时政、青春实践等专题学习，构建系统而丰富的思想成长路径。</p>
-              <div class="work-card-glow"></div>
+              <div class="work-card-bg" style="background: linear-gradient(135deg, rgba(255,184,120,0.16), rgba(255,160,100,0.05))"></div>
+              <div class="work-card-icon-wrap">
+                <span class="work-icon">📚</span>
+              </div>
+              <div class="work-card-body">
+                <h3>主题学习</h3>
+                <p>党史 · 时政 · 青春实践专题<br>构建系统思想成长路径</p>
+              </div>
             </div>
             <div class="work-card anim-item">
-              <div class="work-card-icon">🌍</div>
-              <h3>校园实践</h3>
-              <p>策划品牌活动与实践项目，在服务中沉淀青春，在行动中升华自我。</p>
-              <div class="work-card-glow"></div>
+              <div class="work-card-bg" style="background: linear-gradient(135deg, rgba(255,140,176,0.16), rgba(255,120,160,0.05))"></div>
+              <div class="work-card-icon-wrap">
+                <span class="work-icon">🌍</span>
+              </div>
+              <div class="work-card-body">
+                <h3>校园实践</h3>
+                <p>品牌活动 · 实践项目策划<br>在服务中沉淀青春</p>
+              </div>
             </div>
             <div class="work-card anim-item">
-              <div class="work-card-icon">💬</div>
-              <h3>青年关怀</h3>
-              <p>搭建交流互助平台，连接资源与情感，陪你完成从"想"到"做"的每一次跨越。</p>
-              <div class="work-card-glow"></div>
+              <div class="work-card-bg" style="background: linear-gradient(135deg, rgba(160,200,255,0.16), rgba(140,180,240,0.05))"></div>
+              <div class="work-card-icon-wrap">
+                <span class="work-icon">💬</span>
+              </div>
+              <div class="work-card-body">
+                <h3>青年关怀</h3>
+                <p>交流平台 · 资源连接 · 情感陪伴<br>从"想"到"做"的跨越</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ====== 第4页：实践部的日常（竖排文字） ====== -->
-      <section class="page page-4" id="page4">
+      <!-- ====== 第4页：竖排文字「实践部的日常」 ====== -->
+      <section class="swiper-slide page page-4">
         <div class="page-inner page4-layout">
-          <!-- 竖排文字区域 -->
           <div class="vertical-text-block anim-item">
-            <p class="vertical-char">实</p>
-            <p class="vertical-char">践</p>
-            <p class="vertical-char">部</p>
-            <p class="vertical-char">的</p>
-            <p class="vertical-char">日</p>
-            <p class="vertical-char">常</p>
+            <p>实</p><p>践</p><p>部</p><p>的</p><p>日</p><p>常</p>
           </div>
-          <!-- 装饰小字 -->
           <p class="vertical-sub anim-item">青春正好 · 我们在路上</p>
         </div>
       </section>
 
-      <!-- ====== 第5页：合影回顾（合并所有照片） ====== -->
-      <section class="page page-5" id="page5">
+      <!-- ====== 第5页：合影回顾 ====== -->
+      <section class="swiper-slide page page-5">
         <div class="page-inner">
           <div class="section-header anim-item">
             <span class="section-icon">📸</span>
             <h2 class="section-title">合影回顾</h2>
             <p class="section-sub">每一帧，都是我们共同的故事</p>
           </div>
-
-          <!-- 三列大图 -->
-          <div class="photo-row photo-row--large">
+          <div class="photo-grid">
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723173428_133_11.jpg" alt="实践部合影1" loading="lazy" />
+                <img src="images/微信图片_20260723173428_133_11.jpg" alt="合影1" loading="lazy">
               </div>
               <p class="photo-label">相聚时刻</p>
             </div>
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723173428_134_11.jpg" alt="实践部合影2" loading="lazy" />
+                <img src="images/微信图片_20260723173428_134_11.jpg" alt="合影2" loading="lazy">
               </div>
               <p class="photo-label">并肩前行</p>
             </div>
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723173428_135_11.jpg" alt="实践部合影3" loading="lazy" />
+                <img src="images/微信图片_20260723173428_135_11.jpg" alt="合影3" loading="lazy">
               </div>
               <p class="photo-label">温暖同框</p>
             </div>
-          </div>
-
-          <!-- 两列小图 + 占位 -->
-          <div class="photo-row photo-row--small">
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723173428_136_11.jpg" alt="实践部合影4" loading="lazy" />
+                <img src="images/微信图片_20260723173428_136_11.jpg" alt="合影4" loading="lazy">
               </div>
               <p class="photo-label">欢笑定格</p>
             </div>
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723202704_9_63.jpg" alt="实践部合影5" loading="lazy" />
+                <img src="images/微信图片_20260723202704_9_63.jpg" alt="合影5" loading="lazy">
               </div>
               <p class="photo-label">青春有你</p>
             </div>
@@ -227,40 +209,36 @@
               </div>
             </div>
           </div>
-
           <p class="section-footer-text anim-item">青春的画布，等待你来填满 🎨</p>
         </div>
       </section>
 
       <!-- ====== 第6页：加入我们 ====== -->
-      <section class="page page-6" id="page6">
+      <section class="swiper-slide page page-6">
         <div class="page-inner">
           <div class="section-header anim-item">
             <span class="section-icon">💌</span>
             <h2 class="section-title">加入我们</h2>
             <p class="section-sub">你，就是我们在等的那个人</p>
           </div>
-
           <div class="invite-content">
             <p class="invite-intro anim-item">
               这里有<span class="hl">热烈的舞台</span>，有<span class="hl">成长的节拍</span>，<br>
-              有一起<span class="hl">并肩前行的伙伴</span>。
+              有一起<span class="hl">并肩前行的伙伴</span>
             </p>
-
             <div class="qr-card anim-item">
               <div class="qr-glow"></div>
               <div class="qr-frame">
-                <img id="qrImage" src="images/微信图片_20260723162342_33_99.jpg" alt="QQ群二维码" />
+                <img id="qrImage" src="images/微信图片_20260723162342_33_99.jpg" alt="QQ群二维码">
               </div>
               <div class="qr-info">
                 <p class="qr-label">📱 QQ 群二维码</p>
                 <p class="qr-hint">扫码加入纳新群，我们等你！</p>
               </div>
             </div>
-
             <div class="invite-footer">
               <p class="invite-closing anim-item">
-                让我们一起，<br>把每一次实践<span class="hl">打磨成光芒四射的青春瞬间</span>。
+                让我们一起，<br>把每一次实践<span class="hl">打磨成光芒四射的青春瞬间</span>
               </p>
               <button id="shareBtn" type="button" class="share-btn anim-item">
                 <span class="btn-icon">📤</span> 分享给好友
@@ -270,9 +248,10 @@
         </div>
       </section>
 
-    </main>
+    </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
