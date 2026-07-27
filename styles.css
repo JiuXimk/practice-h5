@@ -199,7 +199,7 @@ html,body{
    第2页 — 关于我们
    ============================================ */
 .about-list{display:flex;flex-direction:column;gap:10px}
-.about-card{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-md);background:rgba(14,20,38,0.35);border:1px solid rgba(255,255,255,0.10)}
+.about-card{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-md);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)}
 .about-emoji{font-size:1.3rem;flex-shrink:0;width:38px;height:38px;display:grid;place-items:center;background:rgba(255,255,255,0.05);border-radius:10px}
 .about-card h3{margin:0 0 3px;font-size:.94rem;font-weight:600}
 .about-card p{margin:0;font-size:.82rem;color:var(--text-soft);line-height:1.55}
@@ -246,28 +246,25 @@ html,body{
 .vertical-sub{margin:0;font-size:.84rem;color:var(--text-muted);letter-spacing:.16em}
 
 /* ============================================
-   第5页 — 合影回顾（如example.png矩形布局）
+   第5页 — 合影回顾（3x2网格 手机友好）
    ============================================ */
 .page-5{text-align:center}
-.photo-mosaic{
+.photo-grid-6{
   display:grid;
-  grid-template-columns:0.9fr 1.6fr;
-  grid-template-rows:1fr 1fr;
-  gap:8px;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
 }
 .photo-card{text-align:center}
-.photo-tall .photo-frame{aspect-ratio:3/4}
-.photo-wide .photo-frame{aspect-ratio:4/3}
 .photo-frame{
   border-radius:var(--radius-sm);overflow:hidden;
+  aspect-ratio:3/4;
   border:2px solid rgba(255,255,255,0.10);
-  box-shadow:0 6px 20px rgba(0,0,0,0.28);
+  box-shadow:0 4px 14px rgba(0,0,0,0.25);
   background:rgba(255,255,255,0.03);
-  transition:transform .3s var(--ease-out);
+  transition:transform .25s var(--ease-out);
 }
 .photo-frame:active{transform:scale(.97)}
 .photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
-.photo-label{margin-top:6px;font-size:.74rem;color:var(--text-muted)}
 
 /* 新生欢迎语 */
 .photo-welcome{margin-top:14px;text-align:center;font-size:.84rem;color:var(--text-soft);line-height:1.8;letter-spacing:.04em}
@@ -320,9 +317,8 @@ html,body{
   .about-card{padding:12px}
   .work-card{padding:14px 10px;gap:8px}
   .work-num{width:36px;height:36px;font-size:.95rem}
-  .photo-mosaic{gap:6px}
-  .photo-tall .photo-frame{aspect-ratio:3/4}
-  .photo-wide .photo-frame{aspect-ratio:3/2}
+  .photo-grid-6{gap:4px}
+  .photo-frame{aspect-ratio:3/4}
   .vertical-text-block span{font-size:2.2rem}
   .qr-frame{width:140px;height:140px}
 }
