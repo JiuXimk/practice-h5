@@ -101,15 +101,8 @@ function toggleMusic() {
 }
 
 /* ============================================
-   5. 二维码 & 分享
+   5. 分享（QR码直接用m20.png，不再替换）
    ============================================ */
-function updateQr() {
-  if (!qrImage) return;
-  const url = window.location.href;
-  qrImage.src = url.startsWith('http')
-    ? `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(url)}`
-    : 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Fexample.com';
-}
 
 function handleShare() {
   if (navigator.share) {
@@ -214,7 +207,6 @@ function init() {
   setViewportScale();
   initSwiper();
   initDots();
-  updateQr();
   setTimeout(() => triggerAnimations(0), 300);
   if (musicBtn) musicBtn.addEventListener('click', toggleMusic);
   if (shareBtn) shareBtn.addEventListener('click', handleShare);
