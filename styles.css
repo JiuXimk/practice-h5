@@ -187,8 +187,8 @@ html,body{
   color:#fff;box-shadow:0 0 16px rgba(120,214,255,0.12);
 }
 
-/* 向下箭头 */
-.scroll-hint{margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.78rem;color:rgba(255,255,255,0.38)}
+/* 底部滑动提示箭头（所有页面通用） */
+.scroll-hint{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.76rem;color:rgba(255,255,255,0.32)}
 .hint-arrow{display:block;width:22px;height:14px;position:relative;animation:hintBounce 2.2s ease-in-out infinite}
 .hint-arrow::before,.hint-arrow::after{content:"";position:absolute;top:0;width:2px;height:14px;background:rgba(255,255,255,0.42);border-radius:1px}
 .hint-arrow::before{left:6px;transform:rotate(-30deg)}
@@ -251,9 +251,6 @@ html,body{
 .page-5{text-align:center}
 .photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 14px}
 .photo-card{text-align:center}
-.photo-card:nth-child(2){margin-top:12px}
-.photo-card:nth-child(3){margin-top:-8px}
-.photo-card:nth-child(4){margin-top:4px}
 .photo-frame{
   border-radius:var(--radius-md);overflow:hidden;
   border:2px solid rgba(255,255,255,0.10);
@@ -264,6 +261,9 @@ html,body{
 .photo-frame:active{transform:scale(.97)}
 .photo-frame img{width:100%;height:auto;display:block}
 .photo-label{margin-top:6px;font-size:.74rem;color:var(--text-muted)}
+
+/* 新生欢迎语 */
+.photo-welcome{margin-top:14px;text-align:center;font-size:.84rem;color:var(--text-soft);line-height:1.8;letter-spacing:.04em}
 .placeholder-frame{display:grid;place-items:center;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.10)}
 .placeholder-content{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);font-size:.76rem}
 .placeholder-icon{font-size:1.5rem}
