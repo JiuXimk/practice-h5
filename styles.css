@@ -34,38 +34,39 @@ html,body{
    ============================================ */
 .bg-im{position:fixed;z-index:0;pointer-events:none}
 
+/* 全部用 vw 做尺寸 + % 做定位，适配任何手机 */
 /* --- 顶部一排 --- */
-.im-1{top:4%;left:2%;width:52px;opacity:.62;animation:imFloat1 3.2s ease-in-out infinite}
-.im-2{top:2%;left:18%;width:46px;opacity:.56;animation:imFloat2 3.6s ease-in-out infinite}
-.im-3{top:3%;left:34%;width:44px;opacity:.58;animation:imFloat3 3.0s ease-in-out infinite}
-.im-4{top:1%;left:50%;width:48px;opacity:.54;animation:imFloat1 3.4s ease-in-out infinite}
-.im-5{top:5%;left:66%;width:42px;opacity:.60;animation:imFloat2 3.8s ease-in-out infinite}
-.im-6{top:2%;left:82%;width:50px;opacity:.52;animation:imFloat3 3.1s ease-in-out infinite}
+.im-1{top:2%;left:2%;width:10vw;max-width:52px;opacity:.62;animation:imFloat1 3.2s ease-in-out infinite}
+.im-2{top:1%;left:16%;width:9vw;max-width:46px;opacity:.56;animation:imFloat2 3.6s ease-in-out infinite}
+.im-3{top:3%;left:32%;width:8.5vw;max-width:44px;opacity:.58;animation:imFloat3 3.0s ease-in-out infinite}
+.im-4{top:1%;left:48%;width:9vw;max-width:48px;opacity:.54;animation:imFloat1 3.4s ease-in-out infinite}
+.im-5{top:4%;left:64%;width:8.5vw;max-width:42px;opacity:.60;animation:imFloat2 3.8s ease-in-out infinite}
+.im-6{top:2%;left:80%;width:9vw;max-width:50px;opacity:.52;animation:imFloat3 3.1s ease-in-out infinite}
 
-/* --- 左侧一列 --- */
-.im-7{top:20%;left:1%;width:44px;opacity:.50;animation:imFloat1 3.5s ease-in-out infinite}
-.im-8{top:38%;left:2%;width:48px;opacity:.48;animation:imFloat2 3.9s ease-in-out infinite}
-.im-9{top:55%;left:1%;width:42px;opacity:.52;animation:imFloat3 3.3s ease-in-out infinite}
-.im-10{top:72%;left:2%;width:46px;opacity:.46;animation:imFloat1 3.7s ease-in-out infinite}
+/* --- 左侧 --- */
+.im-7{top:18%;left:0.5%;width:8.5vw;max-width:44px;opacity:.50;animation:imFloat1 3.5s ease-in-out infinite}
+.im-8{top:35%;left:1%;width:9vw;max-width:48px;opacity:.48;animation:imFloat2 3.9s ease-in-out infinite}
+.im-9{top:52%;left:0.5%;width:8.5vw;max-width:42px;opacity:.52;animation:imFloat3 3.3s ease-in-out infinite}
+.im-10{top:68%;left:1%;width:9vw;max-width:46px;opacity:.46;animation:imFloat1 3.7s ease-in-out infinite}
 
-/* --- 右侧一列 --- */
-.im-11{top:18%;right:1%;width:46px;opacity:.50;animation:imFloat2 3.3s ease-in-out infinite}
-.im-12{top:36%;right:2%;width:44px;opacity:.48;animation:imFloat3 3.6s ease-in-out infinite}
-.im-13{top:54%;right:1%;width:48px;opacity:.52;animation:imFloat1 4.0s ease-in-out infinite}
-.im-14{top:70%;right:2%;width:42px;opacity:.46;animation:imFloat2 3.4s ease-in-out infinite}
+/* --- 右侧 --- */
+.im-11{top:16%;right:0.5%;width:9vw;max-width:46px;opacity:.50;animation:imFloat2 3.3s ease-in-out infinite}
+.im-12{top:33%;right:1%;width:8.5vw;max-width:44px;opacity:.48;animation:imFloat3 3.6s ease-in-out infinite}
+.im-13{top:50%;right:0.5%;width:9vw;max-width:48px;opacity:.52;animation:imFloat1 4.0s ease-in-out infinite}
+.im-14{top:66%;right:1%;width:8.5vw;max-width:42px;opacity:.46;animation:imFloat2 3.4s ease-in-out infinite}
 
-/* --- 底部一排 --- */
-.im-15{bottom:5%;left:6%;width:46px;opacity:.54;animation:imFloat3 3.2s ease-in-out infinite}
-.im-16{bottom:2%;left:24%;width:42px;opacity:.50;animation:imFloat1 3.5s ease-in-out infinite}
-.im-17{bottom:3%;left:42%;width:48px;opacity:.52;animation:imFloat2 3.8s ease-in-out infinite}
-.im-18{bottom:1%;left:58%;width:44px;opacity:.48;animation:imFloat3 3.1s ease-in-out infinite}
-.im-19{bottom:4%;left:74%;width:46px;opacity:.56;animation:imFloat1 3.4s ease-in-out infinite}
+/* --- 底部 --- */
+.im-15{bottom:4%;left:4%;width:9vw;max-width:46px;opacity:.54;animation:imFloat3 3.2s ease-in-out infinite}
+.im-16{bottom:1%;left:22%;width:8.5vw;max-width:42px;opacity:.50;animation:imFloat1 3.5s ease-in-out infinite}
+.im-17{bottom:2%;left:40%;width:9vw;max-width:48px;opacity:.52;animation:imFloat2 3.8s ease-in-out infinite}
+.im-18{bottom:1%;left:56%;width:8.5vw;max-width:44px;opacity:.48;animation:imFloat3 3.1s ease-in-out infinite}
+.im-19{bottom:3%;left:72%;width:9vw;max-width:46px;opacity:.56;animation:imFloat1 3.4s ease-in-out infinite}
 
-/* --- 中间点缀 --- */
-.im-20{top:30%;left:12%;width:38px;opacity:.38;animation:imFloat2 4.2s ease-in-out infinite}
-.im-21{top:48%;right:10%;width:40px;opacity:.36;animation:imFloat3 4.0s ease-in-out infinite}
-.im-22{top:64%;left:14%;width:36px;opacity:.34;animation:imFloat1 4.4s ease-in-out infinite}
-.im-23{bottom:18%;right:12%;width:38px;opacity:.38;animation:imFloat2 3.9s ease-in-out infinite}
+/* --- 中间散落 --- */
+.im-20{top:28%;left:10%;width:7.5vw;max-width:38px;opacity:.38;animation:imFloat2 4.2s ease-in-out infinite}
+.im-21{top:45%;right:8%;width:7.5vw;max-width:40px;opacity:.36;animation:imFloat3 4.0s ease-in-out infinite}
+.im-22{top:60%;left:12%;width:7vw;max-width:36px;opacity:.34;animation:imFloat1 4.4s ease-in-out infinite}
+.im-23{bottom:15%;right:10%;width:7.5vw;max-width:38px;opacity:.38;animation:imFloat2 3.9s ease-in-out infinite}
 
 @keyframes imFloat1{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes imFloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
@@ -268,6 +269,4 @@ html,body{
   .photo-grid{grid-template-columns:repeat(2,1fr);gap:6px}
   .vertical-text-block span{font-size:2.2rem}
   .qr-frame{width:140px;height:140px}
-  /* 小屏隐藏边缘装饰 */
-  .bg-im{display:none}
-}
+  }
