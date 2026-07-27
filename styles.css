@@ -190,12 +190,14 @@ html,body{
 /* 底部滑动提示箭头 */
 .scroll-hint{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.76rem;color:rgba(255,255,255,0.32)}
 
-/* 箭头尖朝上：底部聚拢 + rotate(180deg) 翻转原来的下箭头 */
-.hint-arrow{display:block;width:22px;height:14px;position:relative;animation:hintBounce 2.2s ease-in-out infinite}
-.hint-arrow-inner{display:block;width:100%;height:100%;position:relative;transform:rotate(180deg)}
-.hint-arrow-inner::before,.hint-arrow-inner::after{content:"";position:absolute;bottom:0;width:2px;height:14px;background:rgba(255,255,255,0.42);border-radius:1px}
-.hint-arrow-inner::before{left:6px;transform:rotate(30deg)}
-.hint-arrow-inner::after{right:6px;transform:rotate(-30deg)}
+/* 箭头朝上 ^ */
+.hint-arrow{
+  display:block;width:0;height:0;
+  border-left:7px solid transparent;
+  border-right:7px solid transparent;
+  border-bottom:10px solid rgba(255,255,255,0.42);
+  animation:hintBounce 2.2s ease-in-out infinite;
+}
 @keyframes hintBounce{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-6px);opacity:1}}
 
 /* ============================================
@@ -249,14 +251,20 @@ html,body{
 .vertical-sub{margin:0;font-size:.84rem;color:var(--text-muted);letter-spacing:.16em}
 
 /* ============================================
-   第5页 — 合影回顾（交错布局）
+   第5页 — 合影回顾（马赛克矩形布局）
    ============================================ */
 .page-5{text-align:center}
-.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.photo-mosaic{
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  grid-template-rows:auto auto;
+  gap:8px;
+}
 .photo-card{text-align:center}
+.photo-tall .photo-frame{aspect-ratio:3/4}
+.photo-wide .photo-frame{aspect-ratio:4/3}
 .photo-frame{
   border-radius:var(--radius-sm);overflow:hidden;
-  aspect-ratio:3/4;
   border:2px solid rgba(255,255,255,0.10);
   box-shadow:0 6px 20px rgba(0,0,0,0.28);
   background:rgba(255,255,255,0.03);
@@ -317,7 +325,9 @@ html,body{
   .about-card{padding:12px}
   .work-card{padding:14px 10px;gap:8px}
   .work-num{width:36px;height:36px;font-size:.95rem}
-  .photo-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .photo-mosaic{grid-template-columns:1fr 1fr;gap:6px}
+  .photo-tall .photo-frame{aspect-ratio:3/4}
+  .photo-wide .photo-frame{aspect-ratio:3/2}
   .vertical-text-block span{font-size:2.2rem}
   .qr-frame{width:140px;height:140px}
 }
