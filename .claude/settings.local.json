@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(python -c \"from pptx import Presentation; print\\('ok'\\)\")",
+      "Bash(python *)"
+    ]
+  }
+}
