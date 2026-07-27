@@ -3,120 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>青年发展中心实践部纳新</title>
+  <title>青年发展中心实践部 · 纳新</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- 粒子星空画布 -->
+  <canvas id="starCanvas" aria-hidden="true"></canvas>
+
+  <!-- 浮动光晕装饰层 -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="ambient-glow glow-3" aria-hidden="true"></div>
+
+  <!-- 几何纹饰叠加层 -->
+  <div class="geo-overlay" aria-hidden="true"></div>
+
+  <!-- 浮动SVG装饰元素 -->
+  <svg class="floating-decor decor-1" aria-hidden="true" viewBox="0 0 120 120" fill="none">
+    <circle cx="60" cy="60" r="58" stroke="rgba(120,214,255,0.12)" stroke-width="1.5" stroke-dasharray="8 6"/>
+    <circle cx="60" cy="60" r="40" stroke="rgba(255,140,176,0.10)" stroke-width="1" stroke-dasharray="4 8"/>
+    <circle cx="60" cy="60" r="22" stroke="rgba(120,214,255,0.08)" stroke-width="1"/>
+  </svg>
+
+  <svg class="floating-decor decor-2" aria-hidden="true" viewBox="0 0 80 80" fill="none">
+    <rect x="4" y="4" width="72" height="72" rx="16" stroke="rgba(255,255,255,0.06)" stroke-width="1.2" transform="rotate(15 40 40)"/>
+    <rect x="16" y="16" width="48" height="48" rx="10" stroke="rgba(120,214,255,0.10)" stroke-width="0.8" transform="rotate(30 40 40)"/>
+  </svg>
+
+  <svg class="floating-decor decor-3" aria-hidden="true" viewBox="0 0 100 100" fill="none">
+    <polygon points="50,6 62,38 94,38 68,58 78,92 50,70 22,92 32,58 6,38 38,38" stroke="rgba(255,140,176,0.10)" stroke-width="1"/>
+  </svg>
+
   <div class="app-shell">
+
+    <!-- 顶部导航 -->
     <div class="topbar">
-      <div class="logo">实践部纳新</div>
-      <div class="hint">上下滑动 · 手机浏览最佳</div>
+      <div class="logo">✦ 实践部纳新</div>
+      <div class="hint">上下滑动 · 沉浸浏览</div>
     </div>
 
-    <main class="page-container">
+    <!-- 侧边页码指示器 -->
+    <nav class="page-dots" aria-label="页面导航">
+      <span class="dot active" data-page="0"></span>
+      <span class="dot" data-page="1"></span>
+      <span class="dot" data-page="2"></span>
+      <span class="dot" data-page="3"></span>
+      <span class="dot" data-page="4"></span>
+      <span class="dot" data-page="5"></span>
+    </nav>
+
+    <main class="page-container" id="pageContainer">
+
+      <!-- ====== 第1页：封面 ====== -->
       <section class="page page-1" id="page1">
         <div class="page-inner">
-          <div class="page-label">青年发展中心</div>
-          <h1>实践部纳新啦！</h1>
-          <p class="tagline">热烈欢迎 · 星空青春 · 梦想起航 · 实践筑梦 · 激情绽放</p>
-          <div class="words-row">
-            <span>招募热血青年</span>
-            <span>点亮成长赛道</span>
-            <span>凝聚青年力量</span>
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            青年发展中心
           </div>
-          <div class="scroll-tip">继续滑动，探索我们的故事</div>
+          <h1 class="hero-title">
+            <span class="title-line">实践部</span>
+            <span class="title-line accent">纳新啦</span>
+          </h1>
+          <p class="hero-tagline">
+            以实践为笔，以青春为墨<br>
+            在这里，写下你的大学篇章
+          </p>
+          <div class="hero-keywords">
+            <span>🌟 热血青年</span>
+            <span>🚀 成长赛道</span>
+            <span>🤝 凝聚力量</span>
+            <span>✨ 梦想启航</span>
+          </div>
+          <div class="scroll-hint">
+            <span class="hint-arrow"></span>
+            向下滑动，开启我们的故事
+          </div>
         </div>
+        <!-- 页面底部波浪装饰 -->
+        <svg class="wave-divider" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+          <path fill="none" stroke="rgba(120,214,255,0.15)" stroke-width="1.5"
+                d="M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60"/>
+          <path fill="none" stroke="rgba(255,140,176,0.10)" stroke-width="1"
+                d="M0,80 C240,50 480,110 720,80 C960,50 1200,110 1440,80"/>
+        </svg>
       </section>
 
+      <!-- ====== 第2页：关于我们 ====== -->
       <section class="page page-2" id="page2">
-        <div class="page-inner content-card">
-          <div class="section-title">关于我们</div>
-          <div class="card-grid">
-            <div class="card-text">
-              <p>实践部，是青年发展中心的行动前沿。</p>
-              <p>我们打造“充实校园生活的窗口”，用活动与学习连接每一个热忱的你；</p>
-              <p>我们搭建“学习入党流程的课堂”，以严谨与温度引导同学们逐步成长；</p>
-              <p>我们是“实现自我突破的平台”，让想法有机会变成实践，让梦想有空间落地。</p>
-              <p>无论你是初次接触党建、渴望锤炼组织力，还是想用青春写下更多可能，这里都是你的舞台。</p>
+        <div class="page-inner">
+          <div class="section-header">
+            <span class="section-icon">💡</span>
+            <h2 class="section-title">关于我们</h2>
+            <p class="section-sub">一群有温度、有行动力的年轻人</p>
+          </div>
+          <div class="about-grid">
+            <div class="about-text">
+              <div class="about-item">
+                <span class="about-emoji">🪟</span>
+                <div>
+                  <h3>充实校园生活的窗口</h3>
+                  <p>用丰富多彩的活动与学习体验，连接每一个热忱的你，让你的大学不止于课堂。</p>
+                </div>
+              </div>
+              <div class="about-item">
+                <span class="about-emoji">📖</span>
+                <div>
+                  <h3>学习成长进步的课堂</h3>
+                  <p>以严谨与温度并重的方式，陪伴你一步步了解党、靠近党，在思想上走向成熟。</p>
+                </div>
+              </div>
+              <div class="about-item">
+                <span class="about-emoji">🚀</span>
+                <div>
+                  <h3>实现自我突破的平台</h3>
+                  <p>让每一个想法都有机会变成行动，让每一个梦想都有空间落地生根、开花结果。</p>
+                </div>
+              </div>
             </div>
-            <div class="card-image">
-              <img src="images/微信图片_20260723162342_33_99.jpg" alt="实践部团队照片" />
+            <div class="about-image">
+              <div class="image-frame">
+                <img src="images/微信图片_20260723162342_33_99.jpg" alt="实践部团队风采" loading="lazy" />
+              </div>
+              <p class="image-caption">我们的故事，从这里开始</p>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- ====== 第3页：主要工作 ====== -->
       <section class="page page-3" id="page3">
-        <div class="page-inner content-card">
-          <div class="section-title">我们的主要工作</div>
+        <div class="page-inner">
+          <div class="section-header">
+            <span class="section-icon">🎯</span>
+            <h2 class="section-title">我们的主要工作</h2>
+            <p class="section-sub">在行动中成长，在服务中闪光</p>
+          </div>
           <div class="work-grid">
-            <div class="work-item">
+            <div class="work-card">
+              <div class="work-card-icon">🏫</div>
               <h3>党校培训</h3>
-              <p>组织入党积极分子、发展对象、转正党员等分批次培训，使理论与实践步调一致。</p>
+              <p>组织入党积极分子、发展对象、转正党员分批次培训，让理论与实践同频共振。</p>
+              <div class="work-card-glow"></div>
             </div>
-            <div class="work-item">
+            <div class="work-card">
+              <div class="work-card-icon">📚</div>
               <h3>主题学习</h3>
-              <p>开展党史、时政、青春实践等专题学习，为大家构建系统的思想成长路径。</p>
+              <p>开展党史、时政、青春实践等专题学习，构建系统而丰富的思想成长路径。</p>
+              <div class="work-card-glow"></div>
             </div>
-            <div class="work-item">
+            <div class="work-card">
+              <div class="work-card-icon">🌍</div>
               <h3>校园实践</h3>
-              <p>策划活动与实践项目，让青春在服务中沉淀，在行动中升华。</p>
+              <p>策划品牌活动与实践项目，在服务中沉淀青春，在行动中升华自我。</p>
+              <div class="work-card-glow"></div>
             </div>
-            <div class="work-item">
+            <div class="work-card">
+              <div class="work-card-icon">💬</div>
               <h3>青年关怀</h3>
-              <p>搭建交流平台，连接资源与情感，陪你在成长路上从“想”到“做”。</p>
+              <p>搭建交流互助平台，连接资源与情感，陪你完成从"想"到"做"的每一次跨越。</p>
+              <div class="work-card-glow"></div>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- ====== 第4页：合影回顾1 ====== -->
       <section class="page page-4" id="page4">
         <div class="page-inner">
-          <div class="section-title">合影回顾</div>
-          <p class="subtitle">我们一起看见努力，也看见笑容</p>
-          <div class="photo-grid">
-            <div class="photo-item"><img src="images/微信图片_20260723173428_133_11.jpg" alt="合影1" /></div>
-            <div class="photo-item"><img src="images/微信图片_20260723173428_134_11.jpg" alt="合影2" /></div>
-            <div class="photo-item"><img src="images/微信图片_20260723173428_135_11.jpg" alt="合影3" /></div>
+          <div class="section-header">
+            <span class="section-icon">📸</span>
+            <h2 class="section-title">合影回顾</h2>
+            <p class="section-sub">每一帧，都是我们共同的故事</p>
           </div>
-          <p class="caption">更多瞬间，待你来续写。</p>
+          <div class="photo-grid">
+            <div class="photo-card">
+              <div class="photo-frame">
+                <img src="images/微信图片_20260723173428_133_11.jpg" alt="实践部合影1" loading="lazy" />
+              </div>
+              <p class="photo-label">相聚时刻</p>
+            </div>
+            <div class="photo-card">
+              <div class="photo-frame">
+                <img src="images/微信图片_20260723173428_134_11.jpg" alt="实践部合影2" loading="lazy" />
+              </div>
+              <p class="photo-label">并肩前行</p>
+            </div>
+            <div class="photo-card">
+              <div class="photo-frame">
+                <img src="images/微信图片_20260723173428_135_11.jpg" alt="实践部合影3" loading="lazy" />
+              </div>
+              <p class="photo-label">温暖同框</p>
+            </div>
+          </div>
+          <p class="section-footer-text">更多瞬间，待你来续写 ✨</p>
         </div>
       </section>
 
+      <!-- ====== 第5页：合影回顾2 ====== -->
       <section class="page page-5" id="page5">
         <div class="page-inner">
-          <div class="section-title">精彩继续</div>
-          <p class="subtitle">我们已经为你预留最美的舞台</p>
+          <div class="section-header">
+            <span class="section-icon">🌟</span>
+            <h2 class="section-title">精彩继续</h2>
+            <p class="section-sub">最美的舞台，已经为你预留</p>
+          </div>
           <div class="photo-grid">
-            <div class="photo-item"><img src="images/微信图片_20260723173428_136_11.jpg" alt="合影4" /></div>
-            <div class="photo-item"><img src="images/微信图片_20260723202704_9_63.jpg" alt="合影5" /></div>
-            <div class="photo-placeholder">
-              <div>更多合影</div>
-              <div class="placeholder-note">后续可在此处替换为正式合照</div>
+            <div class="photo-card">
+              <div class="photo-frame">
+                <img src="images/微信图片_20260723173428_136_11.jpg" alt="实践部合影4" loading="lazy" />
+              </div>
+              <p class="photo-label">欢笑定格</p>
+            </div>
+            <div class="photo-card">
+              <div class="photo-frame">
+                <img src="images/微信图片_20260723202704_9_63.jpg" alt="实践部合影5" loading="lazy" />
+              </div>
+              <p class="photo-label">青春有你</p>
+            </div>
+            <div class="photo-card photo-card--placeholder">
+              <div class="photo-frame placeholder-frame">
+                <div class="placeholder-content">
+                  <span class="placeholder-icon">📷</span>
+                  <span>更多合影</span>
+                  <span class="placeholder-note">下一张，等你入镜</span>
+                </div>
+              </div>
             </div>
           </div>
-          <p class="caption">这份青春的画布，等待你来填满。</p>
+          <p class="section-footer-text">青春的画布，等待你来填满 🎨</p>
         </div>
       </section>
 
+      <!-- ====== 第6页：加入我们 ====== -->
       <section class="page page-6" id="page6">
-        <div class="page-inner invite-card">
-          <div class="section-title">加入我们</div>
-          <p class="invite-text">这里有热烈的舞台，有成长的节拍，有共鸣的伙伴。扫描下方QQ群二维码，成为青年发展中心实践部的一员。</p>
-          <div class="qr-card">
-            <div class="qr-frame">
-              <img id="qrImage" src="images/微信图片_20260723162342_33_99.jpg" alt="QQ群二维码占位" />
-            </div>
-            <div class="qr-hint">请在此处替换为真实QQ群二维码</div>
+        <div class="page-inner">
+          <div class="section-header">
+            <span class="section-icon">💌</span>
+            <h2 class="section-title">加入我们</h2>
+            <p class="section-sub">你，就是我们在等的那个人</p>
           </div>
-          <div class="invite-footer">
-            <p>我们一起把每一次实践打造成光芒四射的青春瞬间。</p>
-            <button id="shareBtn" type="button">分享给好友</button>
+
+          <div class="invite-content">
+            <p class="invite-intro">
+              这里有<span class="hl">热烈的舞台</span>，有<span class="hl">成长的节拍</span>，<br>
+              有一起<span class="hl">并肩前行的伙伴</span>。
+            </p>
+
+            <div class="qr-card">
+              <div class="qr-glow"></div>
+              <div class="qr-frame">
+                <img id="qrImage" src="images/微信图片_20260723162342_33_99.jpg" alt="QQ群二维码" />
+              </div>
+              <div class="qr-info">
+                <p class="qr-label">📱 QQ 群二维码</p>
+                <p class="qr-hint">扫码加入纳新群，我们等你！</p>
+              </div>
+            </div>
+
+            <div class="invite-footer">
+              <p class="invite-closing">
+                让我们一起，<br>
+                把每一次实践<span class="hl">打磨成光芒四射的青春瞬间</span>。
+              </p>
+              <button id="shareBtn" type="button" class="share-btn">
+                <span class="btn-icon">📤</span>
+                分享给好友
+              </button>
+            </div>
           </div>
         </div>
+
+        <!-- 底部装饰 -->
+        <svg class="wave-divider wave-divider--bottom" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+          <path fill="none" stroke="rgba(120,214,255,0.12)" stroke-width="1.5"
+                d="M0,40 C300,80 600,0 900,40 C1200,80 1440,0 1440,40"/>
+          <path fill="none" stroke="rgba(255,140,176,0.08)" stroke-width="1"
+                d="M0,60 C300,20 600,90 900,60 C1200,30 1440,90 1440,60"/>
+        </svg>
       </section>
+
     </main>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
