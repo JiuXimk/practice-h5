@@ -140,9 +140,15 @@ html,body{
    第1页 — 封面
    ============================================ */
 .page-1{text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 18px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:.80rem;letter-spacing:.22em;color:var(--text-soft);margin-bottom:20px}
-.badge-dot{width:5px;height:5px;border-radius:50%;background:var(--accent-cyan);box-shadow:0 0 6px var(--glow-cyan);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+/* 艺术字顶部标题 */
+.hero-top-title{
+  font-size:1.2rem;font-weight:700;letter-spacing:.30em;
+  background:linear-gradient(135deg,var(--accent-cyan) 0%,#fff 50%,var(--accent-pink) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:24px;
+  text-shadow:none;
+  filter:drop-shadow(0 0 8px rgba(120,214,255,0.30));
+}
 
 .hero-title{margin:0 auto}
 .title-line{display:block;font-size:3rem;font-weight:800;line-height:1.08;letter-spacing:.02em}
@@ -164,7 +170,7 @@ html,body{
    第2页 — 关于我们
    ============================================ */
 .about-list{display:flex;flex-direction:column;gap:10px}
-.about-card{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-md);background:var(--card-bg);border:1px solid var(--card-border);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.about-card{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-md);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .about-emoji{font-size:1.3rem;flex-shrink:0;width:38px;height:38px;display:grid;place-items:center;background:rgba(255,255,255,0.05);border-radius:10px}
 .about-card h3{margin:0 0 3px;font-size:.94rem;font-weight:600}
 .about-card p{margin:0;font-size:.82rem;color:var(--text-soft);line-height:1.55}
@@ -214,7 +220,7 @@ html,body{
    第5页 — 合影回顾
    ============================================ */
 .page-5{text-align:center}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .photo-card{text-align:center}
 .photo-frame{border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(255,255,255,0.08);box-shadow:0 4px 16px rgba(0,0,0,0.22)}
 .photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
@@ -233,7 +239,7 @@ html,body{
 .hl{color:#fff;font-weight:600;position:relative;white-space:nowrap}
 .hl::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-pink));opacity:.24;border-radius:2px;z-index:-1}
 
-.qr-card{position:relative;padding:20px 20px 14px;border-radius:var(--radius-lg);background:var(--card-bg);border:1px solid var(--card-border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;gap:10px}
+.qr-card{position:relative;padding:20px 20px 14px;border-radius:var(--radius-lg);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;gap:10px}
 .qr-glow{position:absolute;inset:-1px;border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(120,214,255,0.10),rgba(255,140,176,0.07));z-index:-1;filter:blur(16px);opacity:.45}
 .qr-frame{width:160px;height:160px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.22)}
 .qr-frame img{width:100%;height:100%;object-fit:cover}
@@ -266,7 +272,7 @@ html,body{
   .about-card{padding:12px}
   .work-card{padding:14px 10px;gap:8px}
   .work-num{width:36px;height:36px;font-size:.95rem}
-  .photo-grid{grid-template-columns:repeat(2,1fr);gap:6px}
+  .photo-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .vertical-text-block span{font-size:2.2rem}
   .qr-frame{width:140px;height:140px}
-  }
+}

@@ -61,15 +61,38 @@ function initDots() {
 }
 
 /* ============================================
-   4. 背景音乐 — Into The Sun
+   4. 背景音乐 — Into The Sun（自动从第5秒开始）
    ============================================ */
+function startBgm() {
+  if (!bgmAudio || !bgmAudio.paused) return;
+  bgmAudio.currentTime = 5;
+  bgmAudio.play().then(() => {
+    musicBtn.classList.add('playing');
+    if (musicIcon) musicIcon.textContent = '🎵';
+  }).catch(() => {});
+}
+
+function tryAutoPlay() {
+  // 尝试立即播放
+  startBgm();
+  // 如果被浏览器阻止，等用户首次交互时播放
+  if (bgmAudio && bgmAudio.paused) {
+    const playOnTouch = () => {
+      startBgm();
+      document.removeEventListener('touchstart', playOnTouch);
+      document.removeEventListener('click', playOnTouch);
+      document.removeEventListener('wheel', playOnTouch);
+    };
+    document.addEventListener('touchstart', playOnTouch, { once: true });
+    document.addEventListener('click', playOnTouch, { once: true });
+    document.addEventListener('wheel', playOnTouch, { once: true });
+  }
+}
+
 function toggleMusic() {
   if (!bgmAudio) return;
   if (bgmAudio.paused) {
-    bgmAudio.play().then(() => {
-      musicBtn.classList.add('playing');
-      if (musicIcon) musicIcon.textContent = '🎵';
-    }).catch(() => showToast('点击按钮播放音乐 🎵'));
+    startBgm();
   } else {
     bgmAudio.pause();
     musicBtn.classList.remove('playing');
@@ -134,6 +157,7 @@ function init() {
   if (musicBtn) musicBtn.addEventListener('click', toggleMusic);
   if (shareBtn) shareBtn.addEventListener('click', handleShare);
   window.addEventListener('resize', setViewportScale);
+  tryAutoPlay();
 }
 
 document.addEventListener('DOMContentLoaded', init);
