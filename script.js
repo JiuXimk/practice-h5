@@ -1,63 +1,48 @@
 /* ============================================
-   青年发展中心实践部纳新 H5 — Swiper 丝滑版
+   青年发展中心实践部纳新 H5 — Into The Sun
    ============================================ */
 
-// ── DOM ──────────────────────────────────────
 const shareBtn = document.getElementById('shareBtn');
 const qrImage = document.getElementById('qrImage');
 const musicBtn = document.getElementById('musicToggle');
 const musicIcon = musicBtn ? musicBtn.querySelector('.music-icon') : null;
+const bgmAudio = document.getElementById('bgmAudio');
 const dots = Array.from(document.querySelectorAll('#pageDots .dot'));
 
 let swiper;
 let currentIndex = 0;
 
 /* ============================================
-   1. Swiper 初始化 — 丝滑滑动核心
+   1. Swiper — 丝滑滑动
    ============================================ */
 function initSwiper() {
   swiper = new Swiper('.main-swiper', {
     direction: 'vertical',
     loop: false,
     speed: 600,
-    // 鼠标滚轮
     mousewheel: {
       forceToAxis: true,
       sensitivity: 0.8,
       thresholdDelta: 8,
       thresholdTime: 300,
     },
-    // 键盘
-    keyboard: {
-      enabled: true,
-      onlyInViewport: true,
-    },
-    // 触摸
+    keyboard: { enabled: true, onlyInViewport: true },
     touchRatio: 1,
     touchAngle: 45,
     resistance: true,
     resistanceRatio: 0.6,
-    // CSS 过渡（GPU 加速）
-    cssMode: false,
-    // 观察器
     observer: true,
     observeParents: true,
-    // 事件
     on: {
-      slideChange: onSlideChange,
-      slideChangeTransitionEnd: onSlideTransitionEnd,
+      slideChange() {
+        currentIndex = swiper.activeIndex;
+        updateDots();
+      },
+      slideChangeTransitionEnd() {
+        triggerAnimations(swiper.activeIndex);
+      },
     },
   });
-}
-
-function onSlideChange() {
-  currentIndex = swiper.activeIndex;
-  updateDots();
-}
-
-function onSlideTransitionEnd() {
-  // 当前页入场动画
-  triggerAnimations(swiper.activeIndex);
 }
 
 /* ============================================
@@ -68,129 +53,43 @@ function triggerAnimations(slideIndex) {
   if (!slide) return;
   const items = slide.querySelectorAll('.anim-item');
   items.forEach((item, i) => {
-    // 重置
     item.classList.remove('visible');
-    // 错开触发
-    setTimeout(() => {
-      item.classList.add('visible');
-    }, i * 60);
+    setTimeout(() => item.classList.add('visible'), i * 55);
   });
 }
 
 /* ============================================
-   3. 页码指示器
+   3. 页码
    ============================================ */
 function updateDots() {
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === currentIndex);
-  });
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
 }
-
 function initDots() {
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
-      if (swiper && i !== currentIndex) {
-        swiper.slideTo(i);
-      }
+      if (swiper && i !== currentIndex) swiper.slideTo(i);
     });
   });
 }
 
 /* ============================================
-   4. Web Audio API — 背景音乐
+   4. 背景音乐 — Into The Sun
    ============================================ */
-let audioCtx = null;
-let musicPlaying = false;
-let musicNodes = [];
-
-function initAudio() {
-  if (audioCtx) return;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-}
-
-async function startMusic() {
-  if (!audioCtx) initAudio();
-  if (audioCtx.state === 'suspended') await audioCtx.resume();
-  if (musicPlaying) return;
-
-  const ctx = audioCtx;
-  const now = ctx.currentTime;
-  const masterGain = ctx.createGain();
-  masterGain.gain.value = 0;
-  masterGain.gain.rampToValueAtTime(0.10, now + 1.5);
-  masterGain.connect(ctx.destination);
-  musicNodes.push(masterGain);
-
-  const chords = [
-    { base: 261.63, notes: [0, 4, 7, 12] },
-    { base: 196.00, notes: [0, 4, 7, 11] },
-    { base: 220.00, notes: [0, 3, 7, 12] },
-    { base: 174.61, notes: [0, 4, 7, 12] },
-  ];
-  const chordDur = 4.0;
-  const cycleLen = chordDur * chords.length;
-
-  function playChord(chord, start, dur) {
-    for (const st of chord.notes) {
-      const f = chord.base * Math.pow(2, st / 12);
-      const osc = ctx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.value = f;
-      const g = ctx.createGain();
-      g.gain.value = 0;
-      g.gain.linearRampToValueAtTime(0.06, start + 0.5);
-      g.gain.setValueAtTime(0.06, start + dur - 0.5);
-      g.gain.linearRampToValueAtTime(0, start + dur);
-      osc.connect(g); g.connect(masterGain);
-      osc.start(start); osc.stop(start + dur);
-      musicNodes.push(osc, g);
-    }
-    // pad 低音
-    const pad = ctx.createOscillator();
-    pad.type = 'triangle';
-    pad.frequency.value = chord.base * 0.5;
-    const pg = ctx.createGain();
-    pg.gain.value = 0;
-    pg.gain.linearRampToValueAtTime(0.04, start + 0.8);
-    pg.gain.setValueAtTime(0.04, start + dur - 0.5);
-    pg.gain.linearRampToValueAtTime(0, start + dur);
-    pad.connect(pg); pg.connect(masterGain);
-    pad.start(start); pad.stop(start + dur);
-    musicNodes.push(pad, pg);
-  }
-
-  for (let c = 0; c < 30; c++) {
-    const cs = now + c * cycleLen;
-    for (let i = 0; i < chords.length; i++) {
-      playChord(chords[i], cs + i * chordDur, chordDur);
-    }
-  }
-
-  musicPlaying = true;
-  musicBtn.classList.add('playing');
-  musicIcon.textContent = '🎵';
-}
-
-function stopMusic() {
-  if (!audioCtx || !musicPlaying) return;
-  if (musicNodes.length > 0) {
-    musicNodes[0].gain.rampToValueAtTime(0, audioCtx.currentTime + 0.8);
-  }
-  setTimeout(() => {
-    for (const n of musicNodes) {
-      try { n.stop() } catch (_) {}
-      try { n.disconnect() } catch (_) {}
-    }
-    musicNodes.length = 0;
-  }, 900);
-  musicPlaying = false;
-  musicBtn.classList.remove('playing');
-  if (musicIcon) musicIcon.textContent = '🔇';
-}
-
 function toggleMusic() {
-  initAudio();
-  musicPlaying ? stopMusic() : startMusic();
+  if (!bgmAudio) return;
+  if (bgmAudio.paused) {
+    bgmAudio.play().then(() => {
+      musicBtn.classList.add('playing');
+      if (musicIcon) musicIcon.textContent = '🎵';
+    }).catch(() => {
+      // 浏览器自动播放限制
+      showToast('点击按钮播放音乐 🎵');
+    });
+  } else {
+    bgmAudio.pause();
+    musicBtn.classList.remove('playing');
+    if (musicIcon) musicIcon.textContent = '🔇';
+  }
 }
 
 /* ============================================
@@ -231,22 +130,18 @@ function showToast(msg) {
 }
 
 /* ============================================
-   6. 视口缩放（适配不同屏幕）
+   6. 视口缩放
    ============================================ */
 function setViewportScale() {
   const vp = document.getElementById('viewport');
   if (!vp) return;
-  const screenW = window.screen.width;
-  const screenH = window.screen.height;
-  const clientH = document.documentElement.clientHeight || screenH;
-  let scale = 1;
-  if (screenW / clientH >= 320 / 568) {
-    scale = clientH / 568;
-  } else {
-    scale = screenW / 320;
-  }
+  const sw = window.screen.width;
+  const ch = document.documentElement.clientHeight || window.screen.height;
+  let s = 1;
+  if (sw / ch >= 320 / 568) s = ch / 568;
+  else s = sw / 320;
   vp.setAttribute('content',
-    `width=320,initial-scale=${scale},maximum-scale=${scale},user-scalable=no,viewport-fit=cover`
+    `width=320,initial-scale=${s},maximum-scale=${s},user-scalable=no,viewport-fit=cover`
   );
 }
 
@@ -259,7 +154,6 @@ function init() {
   initDots();
   updateQr();
 
-  // 首页立即触发动画
   setTimeout(() => triggerAnimations(0), 300);
 
   if (musicBtn) musicBtn.addEventListener('click', toggleMusic);

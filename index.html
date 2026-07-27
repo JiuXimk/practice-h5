@@ -10,17 +10,28 @@
 <body>
 
   <!-- ======== 背景图层系统 ======== -->
-  <div class="bg-layer bg-base" aria-hidden="true"></div>
-  <div class="bg-layer bg-decor-1" aria-hidden="true"></div>
-  <div class="bg-layer bg-decor-2" aria-hidden="true"></div>
-  <div class="bg-layer bg-decor-3" aria-hidden="true"></div>
-  <img class="bg-sparkle sparkle-1" src="images/图片3.gif" alt="" aria-hidden="true">
-  <img class="bg-sparkle sparkle-2" src="images/图片4.gif" alt="" aria-hidden="true">
-  <img class="bg-sparkle sparkle-3" src="images/图片5.gif" alt="" aria-hidden="true">
-  <div class="bg-layer bg-glow-1" aria-hidden="true"></div>
-  <div class="bg-layer bg-glow-2" aria-hidden="true"></div>
+  <!-- 底图 -->
+  <div class="bg-base" aria-hidden="true"></div>
 
-  <!-- ======== 音乐按钮 ======== -->
+  <!-- im系列可爱装饰 (分散四角，不挡视野) -->
+  <img class="bg-im im-tl" src="images/im1.png" alt="" aria-hidden="true">
+  <img class="bg-im im-tr" src="images/im2.png" alt="" aria-hidden="true">
+  <img class="bg-im im-bl" src="images/im8.png" alt="" aria-hidden="true">
+  <img class="bg-im im-br" src="images/im9.png" alt="" aria-hidden="true">
+  <img class="bg-im im-ml" src="images/im11.png" alt="" aria-hidden="true">
+  <img class="bg-im im-mr" src="images/im12.png" alt="" aria-hidden="true">
+
+  <!-- 动态小装饰 -->
+  <img class="bg-im im-gif1" src="images/im3.gif" alt="" aria-hidden="true">
+  <img class="bg-im im-gif2" src="images/im5.gif" alt="" aria-hidden="true">
+  <img class="bg-im im-gif3" src="images/im6.gif" alt="" aria-hidden="true">
+
+  <!-- 柔和光效 -->
+  <div class="bg-glow bg-glow--cyan" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--pink" aria-hidden="true"></div>
+
+  <!-- ======== 背景音乐 ======== -->
+  <audio id="bgmAudio" src="Liquid Cinema - Into The Sun.mp3" loop preload="auto"></audio>
   <button id="musicToggle" class="music-btn" aria-label="背景音乐">
     <span class="music-icon">🔇</span>
   </button>
@@ -58,12 +69,13 @@
             <span>✨ 梦想启航</span>
           </div>
           <div class="scroll-hint anim-item">
-            <span class="hint-arrow"></span>向上滑动，开启故事
+            <span class="hint-arrow"></span>
+            <span>向上滑动</span>
           </div>
         </div>
       </section>
 
-      <!-- ====== 第2页：关于我们（无图片） ====== -->
+      <!-- ====== 第2页：关于我们 ====== -->
       <section class="swiper-slide page page-2">
         <div class="page-inner">
           <div class="section-header anim-item">
@@ -97,7 +109,7 @@
         </div>
       </section>
 
-      <!-- ====== 第3页：主要工作（参考设计重做） ====== -->
+      <!-- ====== 第3页：主要工作 ====== -->
       <section class="swiper-slide page page-3">
         <div class="page-inner">
           <div class="section-header anim-item">
@@ -105,45 +117,29 @@
             <h2 class="section-title">我们的主要工作</h2>
             <p class="section-sub">在行动中成长，在服务中闪光</p>
           </div>
-          <div class="work-grid">
+          <div class="work-list">
             <div class="work-card anim-item">
-              <div class="work-card-bg" style="background: linear-gradient(135deg, rgba(120,214,255,0.18), rgba(120,180,255,0.06))"></div>
-              <div class="work-card-icon-wrap">
-                <span class="work-icon">🏫</span>
-              </div>
+              <div class="work-card-bg"></div>
+              <div class="work-num">01</div>
               <div class="work-card-body">
-                <h3>党校培训</h3>
-                <p>入党积极分子 · 发展对象 · 转正党员分批培训<br>理论与实践同频共振</p>
+                <h3>负责党校培训考核</h3>
+                <p>组织入党积极分子、发展对象、预备党员的分批次培训与考核，确保理论学习和实践锻炼同步推进。</p>
               </div>
             </div>
             <div class="work-card anim-item">
-              <div class="work-card-bg" style="background: linear-gradient(135deg, rgba(255,184,120,0.16), rgba(255,160,100,0.05))"></div>
-              <div class="work-card-icon-wrap">
-                <span class="work-icon">📚</span>
-              </div>
+              <div class="work-card-bg"></div>
+              <div class="work-num">02</div>
               <div class="work-card-body">
-                <h3>主题学习</h3>
-                <p>党史 · 时政 · 青春实践专题<br>构建系统思想成长路径</p>
+                <h3>举办开班仪式</h3>
+                <p>策划并执行每一期党校培训的开班典礼，以庄重而温暖的仪式感开启每一位学员的成长之旅。</p>
               </div>
             </div>
             <div class="work-card anim-item">
-              <div class="work-card-bg" style="background: linear-gradient(135deg, rgba(255,140,176,0.16), rgba(255,120,160,0.05))"></div>
-              <div class="work-card-icon-wrap">
-                <span class="work-icon">🌍</span>
-              </div>
+              <div class="work-card-bg"></div>
+              <div class="work-num">03</div>
               <div class="work-card-body">
-                <h3>校园实践</h3>
-                <p>品牌活动 · 实践项目策划<br>在服务中沉淀青春</p>
-              </div>
-            </div>
-            <div class="work-card anim-item">
-              <div class="work-card-bg" style="background: linear-gradient(135deg, rgba(160,200,255,0.16), rgba(140,180,240,0.05))"></div>
-              <div class="work-card-icon-wrap">
-                <span class="work-icon">💬</span>
-              </div>
-              <div class="work-card-body">
-                <h3>青年关怀</h3>
-                <p>交流平台 · 资源连接 · 情感陪伴<br>从"想"到"做"的跨越</p>
+                <h3>举办新党员宣誓大会</h3>
+                <p>筹办新党员入党宣誓大会，见证每一位同志面向党旗庄严宣誓的光荣时刻，传承信仰的力量。</p>
               </div>
             </div>
           </div>
@@ -160,7 +156,7 @@
         </div>
       </section>
 
-      <!-- ====== 第5页：合影回顾 ====== -->
+      <!-- ====== 第5页：合影回顾 + 加入我们 ====== -->
       <section class="swiper-slide page page-5">
         <div class="page-inner">
           <div class="section-header anim-item">
@@ -171,31 +167,31 @@
           <div class="photo-grid">
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723173428_133_11.jpg" alt="合影1" loading="lazy">
+                <img src="images/hz1.jpg" alt="合影1" loading="lazy">
               </div>
               <p class="photo-label">相聚时刻</p>
             </div>
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723173428_134_11.jpg" alt="合影2" loading="lazy">
+                <img src="images/together1.jpg" alt="合影2" loading="lazy">
               </div>
               <p class="photo-label">并肩前行</p>
             </div>
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723173428_135_11.jpg" alt="合影3" loading="lazy">
+                <img src="images/zl1.jpg" alt="合影3" loading="lazy">
               </div>
               <p class="photo-label">温暖同框</p>
             </div>
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723173428_136_11.jpg" alt="合影4" loading="lazy">
+                <img src="images/zl2.jpg" alt="合影4" loading="lazy">
               </div>
               <p class="photo-label">欢笑定格</p>
             </div>
             <div class="photo-card anim-item">
               <div class="photo-frame">
-                <img src="images/微信图片_20260723202704_9_63.jpg" alt="合影5" loading="lazy">
+                <img src="images/jc1.jpg" alt="合影5" loading="lazy">
               </div>
               <p class="photo-label">青春有你</p>
             </div>
@@ -209,41 +205,30 @@
               </div>
             </div>
           </div>
-          <p class="section-footer-text anim-item">青春的画布，等待你来填满 🎨</p>
-        </div>
-      </section>
 
-      <!-- ====== 第6页：加入我们 ====== -->
-      <section class="swiper-slide page page-6">
-        <div class="page-inner">
-          <div class="section-header anim-item">
-            <span class="section-icon">💌</span>
-            <h2 class="section-title">加入我们</h2>
-            <p class="section-sub">你，就是我们在等的那个人</p>
-          </div>
-          <div class="invite-content">
-            <p class="invite-intro anim-item">
-              这里有<span class="hl">热烈的舞台</span>，有<span class="hl">成长的节拍</span>，<br>
-              有一起<span class="hl">并肩前行的伙伴</span>
-            </p>
-            <div class="qr-card anim-item">
+          <!-- 加入我们（合并到第5页底部） -->
+          <div class="invite-section anim-item">
+            <div class="section-header" style="margin-top:8px;">
+              <span class="section-icon">💌</span>
+              <h2 class="section-title">加入我们</h2>
+              <p class="section-sub">你，就是我们在等的那个人</p>
+            </div>
+            <div class="qr-card">
               <div class="qr-glow"></div>
               <div class="qr-frame">
-                <img id="qrImage" src="images/微信图片_20260723162342_33_99.jpg" alt="QQ群二维码">
+                <img id="qrImage" src="images/m20.png" alt="QQ群二维码">
               </div>
               <div class="qr-info">
                 <p class="qr-label">📱 QQ 群二维码</p>
                 <p class="qr-hint">扫码加入纳新群，我们等你！</p>
               </div>
             </div>
-            <div class="invite-footer">
-              <p class="invite-closing anim-item">
-                让我们一起，<br>把每一次实践<span class="hl">打磨成光芒四射的青春瞬间</span>
-              </p>
-              <button id="shareBtn" type="button" class="share-btn anim-item">
-                <span class="btn-icon">📤</span> 分享给好友
-              </button>
-            </div>
+            <button id="shareBtn" type="button" class="share-btn anim-item">
+              <span class="btn-icon">📤</span> 分享给好友
+            </button>
+            <p class="invite-closing anim-item">
+              把每一次实践<span class="hl">打磨成光芒四射的青春瞬间</span>
+            </p>
           </div>
         </div>
       </section>
