@@ -251,13 +251,13 @@ html,body{
 .vertical-sub{margin:0;font-size:.84rem;color:var(--text-muted);letter-spacing:.16em}
 
 /* ============================================
-   第5页 — 合影回顾（马赛克矩形布局）
+   第5页 — 合影回顾（如example.png矩形布局）
    ============================================ */
 .page-5{text-align:center}
 .photo-mosaic{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:auto auto;
+  grid-template-columns:0.9fr 1.6fr;
+  grid-template-rows:1fr 1fr;
   gap:8px;
 }
 .photo-card{text-align:center}
