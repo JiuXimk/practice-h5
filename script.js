@@ -134,7 +134,19 @@ function showToast(msg) {
 }
 
 /* ============================================
-   6. 视口缩放
+   6. 目录导航（第1页标签点击跳转）
+   ============================================ */
+function initNavItems() {
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const slide = parseInt(item.dataset.slide);
+      if (swiper && !isNaN(slide)) swiper.slideTo(slide);
+    });
+  });
+}
+
+/* ============================================
+   7. 视口缩放
    ============================================ */
 function setViewportScale() {
   const vp = document.getElementById('viewport');
@@ -157,6 +169,7 @@ function init() {
   if (musicBtn) musicBtn.addEventListener('click', toggleMusic);
   if (shareBtn) shareBtn.addEventListener('click', handleShare);
   window.addEventListener('resize', setViewportScale);
+  initNavItems();
   tryAutoPlay();
 }
 

@@ -139,27 +139,61 @@ html,body{
 /* ============================================
    第1页 — 封面
    ============================================ */
-.page-1{text-align:center}
-/* 艺术字顶部标题 */
+.page-1{text-align:center;position:relative;overflow:hidden}
+
+/* 四周光效边框 */
+.edge-glow{position:absolute;pointer-events:none;z-index:0}
+.edge-top{top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(120,214,255,0.35),rgba(255,140,176,0.30),transparent)}
+.edge-bottom{bottom:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,140,176,0.30),rgba(120,214,255,0.35),transparent)}
+.edge-left{top:10%;bottom:10%;left:0;width:1px;background:linear-gradient(180deg,transparent,rgba(120,214,255,0.30),rgba(255,140,176,0.25),transparent)}
+.edge-right{top:10%;bottom:10%;right:0;width:1px;background:linear-gradient(180deg,transparent,rgba(255,140,176,0.25),rgba(120,214,255,0.30),transparent)}
+
+/* 四角星芒 */
+.corner-spark{position:absolute;z-index:0;pointer-events:none;
+  font-size:1.2rem;color:rgba(255,255,255,0.35);
+  animation:sparkPulse 2.5s ease-in-out infinite;
+}
+.corner-tl{top:8px;left:10px;animation-delay:0s}
+.corner-tr{top:8px;right:10px;animation-delay:.6s}
+.corner-bl{bottom:8px;left:10px;animation-delay:1.2s}
+.corner-br{bottom:8px;right:10px;animation-delay:1.8s}
+@keyframes sparkPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.25)}}
+
+/* 顶部大字：青年发展中心 (比下面更大) */
 .hero-top-title{
-  font-size:1.2rem;font-weight:700;letter-spacing:.30em;
-  background:linear-gradient(135deg,var(--accent-cyan) 0%,#fff 50%,var(--accent-pink) 100%);
+  font-size:1.9rem;font-weight:800;letter-spacing:.28em;
+  background:linear-gradient(135deg,var(--accent-cyan) 0%,#fff 40%,var(--accent-pink) 80%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  margin-bottom:24px;
-  text-shadow:none;
-  filter:drop-shadow(0 0 8px rgba(120,214,255,0.30));
+  filter:drop-shadow(0 0 14px rgba(120,214,255,0.40));
+  margin-bottom:10px;
 }
 
-.hero-title{margin:0 auto}
-.title-line{display:block;font-size:3rem;font-weight:800;line-height:1.08;letter-spacing:.02em}
-.title-line.accent{background:linear-gradient(135deg,var(--accent-cyan),var(--accent-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;padding-bottom:2px}
+/* 副标题：实践部 · 纳新啦 (比上面小) */
+.hero-subtitle{
+  font-size:1.5rem;font-weight:700;letter-spacing:.16em;
+  background:linear-gradient(135deg,#fff 30%,var(--accent-pink));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:18px;
+}
 
-.hero-tagline{margin:18px auto 0;max-width:270px;color:var(--text-soft);font-size:.92rem;line-height:1.8;letter-spacing:.04em}
-.hero-keywords{margin-top:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:7px}
-.hero-keywords span{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);font-size:.80rem;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.hero-tagline{margin:0 auto 0;max-width:280px;color:var(--text-soft);font-size:.92rem;line-height:1.8;letter-spacing:.04em}
 
-/* === 向下V形箭头 === */
-.scroll-hint{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.78rem;color:rgba(255,255,255,0.38)}
+/* 目录导航标签 */
+.hero-nav{margin-top:24px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.nav-item{
+  padding:10px 18px;border-radius:999px;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);
+  font-size:.84rem;color:var(--text-soft);cursor:pointer;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  transition:all .3s var(--ease-out);
+}
+.nav-item:hover,.nav-item:active{
+  background:rgba(120,214,255,0.12);border-color:rgba(120,214,255,0.30);
+  color:#fff;box-shadow:0 0 16px rgba(120,214,255,0.12);
+}
+
+/* 向下箭头 */
+.scroll-hint{margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.78rem;color:rgba(255,255,255,0.38)}
 .hint-arrow{display:block;width:22px;height:14px;position:relative;animation:hintBounce 2.2s ease-in-out infinite}
 .hint-arrow::before,.hint-arrow::after{content:"";position:absolute;bottom:0;width:2px;height:14px;background:rgba(255,255,255,0.42);border-radius:1px}
 .hint-arrow::before{left:6px;transform:rotate(30deg)}
@@ -265,8 +299,10 @@ html,body{
 
 @media(max-width:360px){
   .swiper-slide{padding:42px 10px 14px}
-  .title-line{font-size:2.4rem}
+  .hero-top-title{font-size:1.5rem}
+  .hero-subtitle{font-size:1.2rem}
   .hero-tagline{font-size:.82rem}
+  .nav-item{padding:8px 14px;font-size:.78rem}
   .section-title{font-size:1.15rem}
   .section-icon{font-size:1.4rem}
   .about-card{padding:12px}
