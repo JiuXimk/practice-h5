@@ -32,7 +32,7 @@ html,body{
 /* ============================================
    im1-im24 全部可爱装饰 — 散布屏幕边缘
    ============================================ */
-.bg-im{position:fixed;z-index:0;pointer-events:none}
+.bg-im{position:fixed;z-index:0;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none}
 
 /* 全部用 vw 做尺寸 + % 做定位，适配任何手机 */
 /* --- 顶部一排 --- */
@@ -256,7 +256,7 @@ html,body{
 .page-5{text-align:center}
 .photo-mosaic{
   display:grid;
-  grid-template-columns:1fr 1.5fr;
+  grid-template-columns:1fr 1fr;
   grid-template-rows:auto auto;
   gap:8px;
 }
@@ -325,7 +325,7 @@ html,body{
   .about-card{padding:12px}
   .work-card{padding:14px 10px;gap:8px}
   .work-num{width:36px;height:36px;font-size:.95rem}
-  .photo-mosaic{grid-template-columns:1fr 1fr;gap:6px}
+  .photo-mosaic{gap:6px}
   .photo-tall .photo-frame{aspect-ratio:3/4}
   .photo-wide .photo-frame{aspect-ratio:3/2}
   .vertical-text-block span{font-size:2.2rem}

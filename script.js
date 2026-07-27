@@ -162,18 +162,19 @@ function setViewportScale() {
    ============================================ */
 function initDraggableDecorations() {
   const decors = document.querySelectorAll('.bg-im');
-  let dragEl = null, startX, startY, origLeft, origTop;
+  let dragEl = null, startX, startY, origLeft, origTop, hasMoved = false;
 
   function onStart(e) {
     dragEl = e.target.closest('.bg-im');
     if (!dragEl) return;
-    e.preventDefault();
+    e.stopPropagation();
     const touch = e.touches ? e.touches[0] : e;
     startX = touch.clientX;
     startY = touch.clientY;
     const rect = dragEl.getBoundingClientRect();
     origLeft = rect.left;
     origTop = rect.top;
+    hasMoved = false;
     dragEl.style.transition = 'none';
     dragEl.style.zIndex = '5';
   }
@@ -183,6 +184,8 @@ function initDraggableDecorations() {
     const touch = e.touches ? e.touches[0] : e;
     const dx = touch.clientX - startX;
     const dy = touch.clientY - startY;
+    if (Math.abs(dx) < 3 && Math.abs(dy) < 3) return;
+    hasMoved = true;
     dragEl.style.left = (origLeft + dx) + 'px';
     dragEl.style.top = (origTop + dy) + 'px';
     dragEl.style.right = 'auto';
@@ -191,9 +194,8 @@ function initDraggableDecorations() {
 
   function onEnd() {
     if (!dragEl) return;
-    dragEl.style.transition = 'all 0.5s cubic-bezier(0.16,1,0.3,1)';
+    dragEl.style.transition = 'all 0.6s cubic-bezier(0.16,1,0.3,1)';
     dragEl.style.zIndex = '0';
-    // 松手后飘回原位
     setTimeout(() => {
       dragEl.style.left = '';
       dragEl.style.top = '';
@@ -205,7 +207,6 @@ function initDraggableDecorations() {
 
   decors.forEach(el => {
     el.style.cursor = 'grab';
-    el.style.touchAction = 'none';
     el.addEventListener('mousedown', onStart);
     el.addEventListener('touchstart', onStart, { passive: false });
   });
