@@ -265,18 +265,19 @@ html,body{
 .vertical-sub{margin:0;font-size:.84rem;color:var(--text-muted);letter-spacing:.16em}
 
 /* ============================================
-   第5页 — 合影回顾（3x2网格 手机友好）
+   第5页 — 合影回顾（横竖自适应不留白）
    ============================================ */
 .page-5{text-align:center}
 .photo-grid-6{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:6px;
+  gap:5px;
 }
 .photo-card{text-align:center}
+.photo-tall .photo-frame{aspect-ratio:3/4}
+.photo-wide .photo-frame{aspect-ratio:4/3}
 .photo-frame{
   border-radius:var(--radius-sm);overflow:hidden;
-  aspect-ratio:3/4;
   border:2px solid rgba(255,255,255,0.10);
   box-shadow:0 4px 14px rgba(0,0,0,0.25);
   background:rgba(255,255,255,0.03);
@@ -336,8 +337,9 @@ html,body{
   .about-card{padding:12px}
   .work-card{padding:14px 10px;gap:8px}
   .work-num{width:36px;height:36px;font-size:.95rem}
-  .photo-grid-6{gap:4px}
-  .photo-frame{aspect-ratio:3/4}
+  .photo-grid-6{gap:3px}
+  .photo-tall .photo-frame{aspect-ratio:3/4}
+  .photo-wide .photo-frame{aspect-ratio:3/2}
   .vertical-text-block span{font-size:2.2rem}
   .qr-frame{width:140px;height:140px}
 }
