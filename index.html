@@ -9,22 +9,33 @@
 </head>
 <body>
 
-  <!-- ======== 背景图层系统 ======== -->
-  <!-- 底图 -->
+  <!-- ======== 背景图层 ======== -->
   <div class="bg-base" aria-hidden="true"></div>
 
-  <!-- im系列可爱装饰 (分散四角，不挡视野) -->
-  <img class="bg-im im-tl" src="images/im1.png" alt="" aria-hidden="true">
-  <img class="bg-im im-tr" src="images/im2.png" alt="" aria-hidden="true">
-  <img class="bg-im im-bl" src="images/im8.png" alt="" aria-hidden="true">
-  <img class="bg-im im-br" src="images/im9.png" alt="" aria-hidden="true">
-  <img class="bg-im im-ml" src="images/im11.png" alt="" aria-hidden="true">
-  <img class="bg-im im-mr" src="images/im12.png" alt="" aria-hidden="true">
-
-  <!-- 动态小装饰 -->
-  <img class="bg-im im-gif1" src="images/im3.gif" alt="" aria-hidden="true">
-  <img class="bg-im im-gif2" src="images/im5.gif" alt="" aria-hidden="true">
-  <img class="bg-im im-gif3" src="images/im6.gif" alt="" aria-hidden="true">
+  <!-- im1-im24 全部可爱装饰散布四角 + 边缘 -->
+  <img class="bg-im im-1"  src="images/im1.png"  alt="" aria-hidden="true">
+  <img class="bg-im im-2"  src="images/im2.png"  alt="" aria-hidden="true">
+  <img class="bg-im im-3"  src="images/im3.gif"  alt="" aria-hidden="true">
+  <img class="bg-im im-4"  src="images/im4.gif"  alt="" aria-hidden="true">
+  <img class="bg-im im-5"  src="images/im5.gif"  alt="" aria-hidden="true">
+  <img class="bg-im im-6"  src="images/im6.gif"  alt="" aria-hidden="true">
+  <img class="bg-im im-7"  src="images/im7.png"  alt="" aria-hidden="true">
+  <img class="bg-im im-8"  src="images/im8.png"  alt="" aria-hidden="true">
+  <img class="bg-im im-9"  src="images/im9.png"  alt="" aria-hidden="true">
+  <img class="bg-im im-10" src="images/im10.png" alt="" aria-hidden="true">
+  <img class="bg-im im-11" src="images/im11.png" alt="" aria-hidden="true">
+  <img class="bg-im im-12" src="images/im12.png" alt="" aria-hidden="true">
+  <img class="bg-im im-13" src="images/im13.png" alt="" aria-hidden="true">
+  <img class="bg-im im-14" src="images/im14.gif" alt="" aria-hidden="true">
+  <img class="bg-im im-15" src="images/im15.png" alt="" aria-hidden="true">
+  <img class="bg-im im-16" src="images/im16.png" alt="" aria-hidden="true">
+  <img class="bg-im im-17" src="images/im17.png" alt="" aria-hidden="true">
+  <img class="bg-im im-18" src="images/im18.png" alt="" aria-hidden="true">
+  <img class="bg-im im-19" src="images/im19.gif" alt="" aria-hidden="true">
+  <img class="bg-im im-20" src="images/im21.png" alt="" aria-hidden="true">
+  <img class="bg-im im-21" src="images/im22.png" alt="" aria-hidden="true">
+  <img class="bg-im im-22" src="images/im23.png" alt="" aria-hidden="true">
+  <img class="bg-im im-23" src="images/im24.png" alt="" aria-hidden="true">
 
   <!-- 柔和光效 -->
   <div class="bg-glow bg-glow--cyan" aria-hidden="true"></div>
@@ -36,20 +47,21 @@
     <span class="music-icon">🔇</span>
   </button>
 
-  <!-- ======== 页码指示器 ======== -->
+  <!-- ======== 页码指示器 (6页) ======== -->
   <nav class="page-dots" id="pageDots" aria-label="页面导航">
     <span class="dot active"></span>
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>
+    <span class="dot"></span>
   </nav>
 
-  <!-- ======== Swiper 容器 ======== -->
+  <!-- ======== Swiper ======== -->
   <div class="swiper main-swiper" id="mainSwiper">
     <div class="swiper-wrapper">
 
-      <!-- ====== 第1页：封面 ====== -->
+      <!-- 第1页：封面 -->
       <section class="swiper-slide page page-1">
         <div class="page-inner">
           <div class="hero-badge anim-item">
@@ -70,12 +82,12 @@
           </div>
           <div class="scroll-hint anim-item">
             <span class="hint-arrow"></span>
-            <span>向上滑动</span>
+            <span>向下滑动</span>
           </div>
         </div>
       </section>
 
-      <!-- ====== 第2页：关于我们 ====== -->
+      <!-- 第2页：关于我们 -->
       <section class="swiper-slide page page-2">
         <div class="page-inner">
           <div class="section-header anim-item">
@@ -109,7 +121,7 @@
         </div>
       </section>
 
-      <!-- ====== 第3页：主要工作 ====== -->
+      <!-- 第3页：主要工作 -->
       <section class="swiper-slide page page-3">
         <div class="page-inner">
           <div class="section-header anim-item">
@@ -146,17 +158,22 @@
         </div>
       </section>
 
-      <!-- ====== 第4页：竖排文字「实践部的日常」 ====== -->
+      <!-- 第4页：实践部的日常（竖排文字） -->
       <section class="swiper-slide page page-4">
         <div class="page-inner page4-layout">
           <div class="vertical-text-block anim-item">
-            <p>实</p><p>践</p><p>部</p><p>的</p><p>日</p><p>常</p>
+            <span>实</span>
+            <span>践</span>
+            <span>部</span>
+            <span>的</span>
+            <span>日</span>
+            <span>常</span>
           </div>
           <p class="vertical-sub anim-item">青春正好 · 我们在路上</p>
         </div>
       </section>
 
-      <!-- ====== 第5页：合影回顾 + 加入我们 ====== -->
+      <!-- 第5页：合影回顾 -->
       <section class="swiper-slide page page-5">
         <div class="page-inner">
           <div class="section-header anim-item">
@@ -205,15 +222,23 @@
               </div>
             </div>
           </div>
+          <p class="section-footer-text anim-item">青春的画布，等待你来填满 🎨</p>
+        </div>
+      </section>
 
-          <!-- 加入我们（合并到第5页底部） -->
-          <div class="invite-section anim-item">
-            <div class="section-header" style="margin-top:8px;">
-              <span class="section-icon">💌</span>
-              <h2 class="section-title">加入我们</h2>
-              <p class="section-sub">你，就是我们在等的那个人</p>
-            </div>
-            <div class="qr-card">
+      <!-- 第6页：加入我们 -->
+      <section class="swiper-slide page page-6">
+        <div class="page-inner">
+          <div class="section-header anim-item">
+            <span class="section-icon">💌</span>
+            <h2 class="section-title">加入我们</h2>
+            <p class="section-sub">你，就是我们在等的那个人</p>
+          </div>
+          <div class="invite-content">
+            <p class="invite-intro anim-item">
+              这里有<span class="hl">热烈的舞台</span>，<br>有<span class="hl">成长的节拍</span>，<br>有一起<span class="hl">并肩前行的伙伴</span>。
+            </p>
+            <div class="qr-card anim-item">
               <div class="qr-glow"></div>
               <div class="qr-frame">
                 <img id="qrImage" src="images/m20.png" alt="QQ群二维码">
