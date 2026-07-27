@@ -187,12 +187,15 @@ html,body{
   color:#fff;box-shadow:0 0 16px rgba(120,214,255,0.12);
 }
 
-/* 底部滑动提示箭头（所有页面通用） */
+/* 底部滑动提示箭头 */
 .scroll-hint{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.76rem;color:rgba(255,255,255,0.32)}
+
+/* 箭头尖朝上：底部聚拢 + rotate(180deg) 翻转原来的下箭头 */
 .hint-arrow{display:block;width:22px;height:14px;position:relative;animation:hintBounce 2.2s ease-in-out infinite}
-.hint-arrow::before,.hint-arrow::after{content:"";position:absolute;top:0;width:2px;height:14px;background:rgba(255,255,255,0.42);border-radius:1px}
-.hint-arrow::before{left:6px;transform:rotate(-30deg)}
-.hint-arrow::after{right:6px;transform:rotate(30deg)}
+.hint-arrow-inner{display:block;width:100%;height:100%;position:relative;transform:rotate(180deg)}
+.hint-arrow-inner::before,.hint-arrow-inner::after{content:"";position:absolute;bottom:0;width:2px;height:14px;background:rgba(255,255,255,0.42);border-radius:1px}
+.hint-arrow-inner::before{left:6px;transform:rotate(30deg)}
+.hint-arrow-inner::after{right:6px;transform:rotate(-30deg)}
 @keyframes hintBounce{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-6px);opacity:1}}
 
 /* ============================================
@@ -249,17 +252,18 @@ html,body{
    第5页 — 合影回顾（交错布局）
    ============================================ */
 .page-5{text-align:center}
-.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 14px}
+.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .photo-card{text-align:center}
 .photo-frame{
-  border-radius:var(--radius-md);overflow:hidden;
+  border-radius:var(--radius-sm);overflow:hidden;
+  aspect-ratio:3/4;
   border:2px solid rgba(255,255,255,0.10);
   box-shadow:0 6px 20px rgba(0,0,0,0.28);
   background:rgba(255,255,255,0.03);
   transition:transform .3s var(--ease-out);
 }
 .photo-frame:active{transform:scale(.97)}
-.photo-frame img{width:100%;height:auto;display:block}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
 .photo-label{margin-top:6px;font-size:.74rem;color:var(--text-muted)}
 
 /* 新生欢迎语 */

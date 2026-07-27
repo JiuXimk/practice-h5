@@ -158,7 +158,65 @@ function setViewportScale() {
 }
 
 /* ============================================
-   7. 初始化
+   7. 可拖拽装饰图片
+   ============================================ */
+function initDraggableDecorations() {
+  const decors = document.querySelectorAll('.bg-im');
+  let dragEl = null, startX, startY, origLeft, origTop;
+
+  function onStart(e) {
+    dragEl = e.target.closest('.bg-im');
+    if (!dragEl) return;
+    e.preventDefault();
+    const touch = e.touches ? e.touches[0] : e;
+    startX = touch.clientX;
+    startY = touch.clientY;
+    const rect = dragEl.getBoundingClientRect();
+    origLeft = rect.left;
+    origTop = rect.top;
+    dragEl.style.transition = 'none';
+    dragEl.style.zIndex = '5';
+  }
+
+  function onMove(e) {
+    if (!dragEl) return;
+    const touch = e.touches ? e.touches[0] : e;
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+    dragEl.style.left = (origLeft + dx) + 'px';
+    dragEl.style.top = (origTop + dy) + 'px';
+    dragEl.style.right = 'auto';
+    dragEl.style.bottom = 'auto';
+  }
+
+  function onEnd() {
+    if (!dragEl) return;
+    dragEl.style.transition = 'all 0.5s cubic-bezier(0.16,1,0.3,1)';
+    dragEl.style.zIndex = '0';
+    // 松手后飘回原位
+    setTimeout(() => {
+      dragEl.style.left = '';
+      dragEl.style.top = '';
+      dragEl.style.right = '';
+      dragEl.style.bottom = '';
+    }, 50);
+    dragEl = null;
+  }
+
+  decors.forEach(el => {
+    el.style.cursor = 'grab';
+    el.style.touchAction = 'none';
+    el.addEventListener('mousedown', onStart);
+    el.addEventListener('touchstart', onStart, { passive: false });
+  });
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('touchmove', onMove, { passive: false });
+  document.addEventListener('mouseup', onEnd);
+  document.addEventListener('touchend', onEnd);
+}
+
+/* ============================================
+   8. 初始化
    ============================================ */
 function init() {
   setViewportScale();
@@ -170,6 +228,7 @@ function init() {
   if (shareBtn) shareBtn.addEventListener('click', handleShare);
   window.addEventListener('resize', setViewportScale);
   initNavItems();
+  initDraggableDecorations();
   tryAutoPlay();
 }
 
